@@ -1,0 +1,28 @@
+.center-content{
+    text-align: -webkit-center;
+    position: relative;
+    height: 100vh;
+    
+  }
+.example-card {
+    max-width: 500px;
+    height: 500px;
+    margin-top: 100px;
+    background-color: #fff;
+    padding: 70px;
+  }
+  
+.credentials-container{
+    margin-top: 60px;
+}
+.credential-container{
+    margin: 20px;
+}
+input[type="email"],
+input[type="password"]{
+    font-size: 1.3rem;
+}
+#btn-register:hover{
+    background-color: #eee;
+    
+}
