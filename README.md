@@ -1,7 +1,7 @@
 # TodoApp
 
 ## Business Requirements:
-- will Create a to do app that allows user to set a due date on activities and will send notification via email once an activity is done or expired.
+- Will Create a to do app that allows user to set a due date on activities and will send notification via email once an activity is done or expired.
 
 ## Scope:
 - Crud ToDo list
