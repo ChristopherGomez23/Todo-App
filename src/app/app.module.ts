@@ -9,7 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { AccountRecoveryComponent } from './account-recovery/account-recovery.component';
+
 
 
 
@@ -18,7 +18,7 @@ import { AccountRecoveryComponent } from './account-recovery/account-recovery.co
     AppComponent,
     LoginComponent,
     SignupComponent,
-    AccountRecoveryComponent
+    
   ],
   imports: [
     BrowserModule,
