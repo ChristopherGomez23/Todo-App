@@ -1,1 +1,17 @@
-<h1 *ngIf="user$ | async as user">Welcome to our app, {{user.email}}!</h1>
+ <div class="home-container mat-elevation-z5">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Welcome to TaskTango</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- <p>Hello, {{ userName }}!</p> -->
+          <p>TaskTango is a simple and easy-to-use to-do list app that helps you stay organized and on top of your tasks.</p>
+          <div class="img-container">
+          <img [src]="myLogo" alt="guy-with-pencil-checklist-notebook">
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="onClick()">Explore</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
