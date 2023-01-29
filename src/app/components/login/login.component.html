@@ -1,32 +1,32 @@
-<div class="title-container">
-  <h1 style="font-size:2.5rem; color: #fff; margin: 40px; font-weight: 600;">ToDo<span style="color:#6face2; font-weight: 600;">App</span></h1>
-</div>
-<div class="center-content">
-  <mat-card class="example-card">
-    <mat-card-header>
-
-      <mat-card-title style="font-size: 2.3rem; font-family: Arial, Helvetica, sans-serif;">Log<span style="color:#00539B; font-weight: 600;">In</span> </mat-card-title>
-
-    </mat-card-header>
-
-    <mat-card-content>
-      <div class="credentials-container">
-      <div class="credential-container">
-      <mat-form-field class="example-full-width">
-        <input type="Email" placeholder="Email" matInput  required>
+<div class="form-container mat-elevation-z5">
+  <h1>Login</h1>
+  <form [formGroup]="loginForm">
+      <mat-form-field>
+          <input matInput
+          placeholder="Email address"
+          formControlName="email" />
+          <mat-error *ngIf="email?.errors?.['required']">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">
+            Please enter a correct email format
+          </mat-error>
       </mat-form-field>
-    </div>
-    <div class="credential-container">
-      <mat-form-field class="example-full-width">
-        <input type="password" placeholder="Password" matInput required>
+      <mat-form-field>
+          <input matInput
+          placeholder="Password"
+          formControlName="password"
+          type="password" />
+          <mat-error *ngIf="password?.errors?.['required']">
+            Password is required
+          </mat-error>
       </mat-form-field>
-    </div>
-  </div>
-  <div class="btn-container" >
-    <button mat-raised-button color="primary" style="width:120px; background-color:#007DC5; color:#fff; font-size: 1.2rem;">Log in</button>
-    <a routerLink="/signup" id="btn-signup" mat-button style="color:#084e8b; margin-left: 5px;">Sign Up</a>
-  </div>
-    </mat-card-content>
-  </mat-card>
+      <div class="center margin-top">
+        <button mat-raised-button color="primary" type="submit">
+        Login
+      </button>
+      </div>
 
+      <span class="center margin-top">No Account Yet? <a class="sign-up-link" routerLink="sign-up">Sign Up</a></span>
+  </form>
 </div>
