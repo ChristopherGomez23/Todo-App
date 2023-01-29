@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent {
-
+  myLogo:string = 'assets/images/checklist.jpg';
 }

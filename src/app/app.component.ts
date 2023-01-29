@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
 
-
   constructor(
     public authService: AuthenticationService,
     private router: Router
