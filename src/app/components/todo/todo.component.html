@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./todo.css" />
-		<link
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-			rel="stylesheet"
-			integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer" />
-	</head>
-	<body>
-		<div class="main_container">
-			<div class="input_container">
-				<input class="input" type="text" />
-				<input value="Add Task" class="button" type="button" />
-			</div>
-			<div class="display_container">
-				<ul class="display_task">
-					<h1 class="task_container_title">Tasks List:</h1>
-				</ul>
-			</div>
-		</div>
+<div class="card shadow-lg mt-5">
+    <div class="card-header text-center py-4 border-0">
+        <h1 class="display-6 fw-bold">To Do List</h1>
+    </div>
+    <div class="card-body p-4">
 
-		<script src="./todo.js"></script>
-	</body>
-</html>
- 
- 
+        <ul class="list-group">
+            <li class="list-group-item mb-2 border py-0 rounded-3">
+                <div class="input-group">
+                    <input type="text" class="form-control border-0 py-3 shadow-none" placeholder="Title goes here"
+                        #titleInput>
+                    <button class="btn text-success border-0" (click)="onClick(titleInput)">
+                        <i class="fa-solid fa-circle-plus fa-xl"></i>
+                    </button>
+                </div>
+            </li>
+            <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of todos">
+                <span>
+                    <i class="text-success" (click)="onStatusChange(item.id,!item.isDone)"
+                        [ngClass]="item.isDone?'fa-solid fa-circle-check':'fa-regular fa-circle'"></i>
+                    {{item.title}}
+                    <span class="float-end text-secondary"
+                    (click)="onDelete(item.id)">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
