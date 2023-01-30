@@ -22,7 +22,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { TodoComponent } from './components/todo/todo.component';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -48,6 +48,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     MatInputModule,
     MatCardModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     HotToastModule.forRoot(),
