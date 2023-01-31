@@ -1,30 +1,37 @@
 <div class="card shadow-lg mt-5">
-    <div class="card-header text-center py-4 border-0">
-        <h1 class="display-6 fw-bold">To Do List</h1>
-    </div>
-    <div class="card-body p-4">
+    <mat-card style="height: auto;">
+        <mat-card-header>
+            <h1>To-Do's</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-grid-list cols="3" rowHeight="3:1">
+                <mat-grid-tile *ngFor="let todo of todoList;">
+                    <mat-card style="height:auto; width:100%;">
+                        <mat-card-header>
+                            Title: <span style="font-size: 1.5rem;">{{ todo.title }}</span>
+                        </mat-card-header>
 
-        <ul class="list-group">
-            <li class="list-group-item mb-2 border py-0 rounded-3">
-                <div class="input-group">
-                    <input type="text" class="form-control border-0 py-3 shadow-none" placeholder="Title goes here"
-                        #titleInput>
-                    <button class="btn text-success border-0" (click)="onClick(titleInput)">
-                        <i class="fa-solid fa-circle-plus fa-xl"></i>
-                    </button>
-                </div>
-            </li>
-            <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of todos">
-                <span>
-                    <i class="text-success" (click)="onStatusChange(item.id,!item.isDone)"
-                        [ngClass]="item.isDone?'fa-solid fa-circle-check':'fa-regular fa-circle'"></i>
-                    {{item.title}}
-                    <span class="float-end text-secondary"
-                    (click)="onDelete(item.id)">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </span>
-                </span>
-            </li>
-        </ul>
-    </div>
+                        <mat-card-content>
+                            <p>{{ todo.description }}</p> 
+                            <p>Start:  {{ todo.start_date }}</p>
+                            <p>End: {{ todo.end_date }}</p>
+                        </mat-card-content>
+                        
+                        <mat-card-actions>
+                            <div class="button-wrapper">
+                                <button mat-raised-button color="warn" (click)="todoDel(todo)">Delete</button>
+                            </div>
+                        </mat-card-actions>   
+                        
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div>
+    <button mat-icon-button style="background-color: white; bottom:50px; right:50px; position: fixed;" (click)="openAddDialog()">
+        <mat-icon>add</mat-icon>
+    </button>    
 </div>

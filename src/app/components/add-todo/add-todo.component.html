@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header>
+        <h1>Add To-Do</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="todoForm" (ngSubmit)="addTodo()">
+            <mat-form-field>
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Description...." formControlName="description"></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="start" placeholder="Start date">
+                  <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              
+                <mat-error *ngIf="todoForm.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="todoForm.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+            </mat-form-field>
+
+            <div class="button-wrapper">
+                <button mat-raised-button color="primary" type="submit">Add</button>
+            </div>
+
+        </form>
+        
+    </mat-card-content>
+</mat-card>

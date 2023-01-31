@@ -10,7 +10,6 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class HomeComponent implements OnInit{
   myLogo:string = 'assets/images/checklist.jpg';
 
-  user$ = this.authService.currentUser$;
   constructor(private authService: AuthenticationService, private router: Router){
 
   }
@@ -18,11 +17,10 @@ export class HomeComponent implements OnInit{
 
   }
 
-
   userName = 'User'; // replace with actual user name
 
   onClick() {
     // navigate to the next page or perform some action
-    this.router.navigate(['/todo']);
+    this.router.navigate(['todo']);
   }
 }

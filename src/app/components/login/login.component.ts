@@ -38,18 +38,7 @@ export class LoginComponent implements OnInit{
       return;
     }
 
-
-
-    this.authService.login(email, password)
-    .pipe(
-      this.toast.observe({
-        success: 'Logged in Successfully',
-        loading: 'Logging in...',
-        error: 'There was an error'
-      })
-
-    ).subscribe(() =>{
-      this.router.navigate(['/home']);
-    })
+    this.authService.SignIn(email, password);
+  }
 }
-}
+ 

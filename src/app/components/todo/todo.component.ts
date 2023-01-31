@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../shared/todo.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { TodoDataService } from 'src/app/services/todo-data.service';
+import { Todos } from 'src/app/services/todos';
+import { AddTodoComponent } from '../add-todo/add-todo.component';
+
 
 @Component({
   selector: 'app-todo',
@@ -9,31 +14,41 @@ import { TodoService } from '../shared/todo.service';
 })
 export class TodoComponent implements OnInit {
 
-  todos: any[] = [];
+  user = this.authService.userData.uid;
 
-  constructor(private todoService: TodoService) { }
+  todoList: Todos[] = [];
+
+  constructor(
+    private authService: AuthenticationService,
+    private dialog: MatDialog,
+    private ts: TodoDataService,
+  ) { }
 
   ngOnInit(): void {
-    this.todoService.firestoreCollection.valueChanges({ idField: 'id' })
-      .subscribe(item => {
-        this.todos = item.sort((a:any,b:any) =>
-        {return a.isDone -b.isDone } );
-      })
+    this.getAllTodos();
   }
 
-  onClick(titleInput: HTMLInputElement) {
-    if (titleInput.value) {
-      this.todoService.addTodo(titleInput.value);
-      titleInput.value = "";
-    }
+  openAddDialog(){
+    const dialogRef = this.dialog.open(AddTodoComponent, {
+      height: 'auto',
+      width: '55%'
+    });
   }
 
-  onStatusChange(id: string, newStatus: boolean) {
-    this.todoService.updateTodoStatus(id, newStatus);
+  getAllTodos() {
+    this.ts.getTodo().subscribe(res => {
+      this.todoList = res.map((e: any) => {
+        const data = e.payload.doc.data();
+        data.id = e.payload.doc.id;
+        return data;
+      });
+    })
+
   }
 
-  onDelete(id:string){
-    this.todoService.deleteTodo(id);
+  todoDel(todo: Todos){
+    this.ts.delTodo(todo);
   }
+
 
 }
